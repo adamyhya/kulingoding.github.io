@@ -121,63 +121,8 @@ asset.assetConfig.path+' with hash '+oldAsset.assetConfig.hash+' . This asset wi
 Microloader.updatedAssets.pop(),asset.cache()}Microloader.notifyUpdateReady()},notifyUpdateReady:function(){'checking'!==Microloader.appCacheState&&Microloader.updatedAssetsReady&&('updated'===Microloader.appCacheState||Microloader.updatedManifest)&&(Microloader.appUpdate={updated:!0,app:'updated'===Microloader.appCacheState,manifest:Microloader.updatedManifest&&Microloader.updatedManifest.exportContent()},Microloader.fireAppUpdate())},fireAppUpdate:function(){Ext.GlobalEvents&&Ext.defer(function(){Ext.GlobalEvents.fireEvent('appupdate',
 Microloader.appUpdate)},1E3)},checksum:function(content,hash){if(!content||!hash)return!1;var passed=!0,hashLn=hash.length,checksumType=content.substring(0,1);'/'==checksumType?content.substring(2,hashLn+2)!==hash&&(passed=!1):'f'==checksumType?content.substring(10,hashLn+10)!==hash&&(passed=!1):'.'==checksumType&&content.substring(1,hashLn+1)!==hash&&(passed=!1);return passed},parseResult:function(result){var rst={};!result.exception&&0!==result.status||Boot.env.phantom?200<=result.status&&300>result.status||
 304===result.status||Boot.env.phantom||0===result.status&&0<result.content.length?rst.content=result.content:rst.error=!0:rst.error=!0;return rst}};return Microloader}();Ext.manifest=Ext.manifest||'bootstrap';Ext.Microloader.run();</script>
-    <style type="text/css">
-        #loading-mask
-      {
-        position: absolute;
-        left:     0;
-        top:      0;
-        width:    100%;
-        height:   100%;
-        z-index:  20000;
-        background-color:black;/#3892d3;/
-      }
-
-
-      #loading-parent
-      {
-        position: absolute;
-        z-index:  20001;
-        height: 100%;
-        width: 100%;
-        padding-top: 50px;
-        color: white;
-      }
-
-      .loader {
-        border: 16px solid #00A998;/#f3f3f3;/
-        border-radius: 50%;
-        border-top: 16px solid white;/#3498db;/
-        border-bottom: 16px solid white;/#3498db;/
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite; /* Safari */
-        animation: spin 2s linear infinite;
-      }
-      /* Safari */
-      @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-      }
-
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
-    </style>
+    
 </head>
 <body>
-  <div id="loading-mask"></div>
-  <div id="loading-parent">
-      <div id="loading-child">
-          <center>              
-              <img src="resources/images/uir.png"/><br><br>
-              <h1>Memuat KRS Sementara<br>Harap menunggu...</h1>
-              <br><br>
-              <div class="loader"></div>
-          </center>
-      </div>
-  </div>  
 </body>
 </html>
